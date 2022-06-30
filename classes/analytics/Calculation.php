@@ -11,7 +11,7 @@ class Calculation {
         if ($additionalCondition) {
             $query .= " AND '{$additionalCondition[0]}' = '{$additionalCondition[1]}'";
         }
-        echo $query;
+
         $resource = $db->query($query);
         $row = $resource->fetch_assoc();
         return $row['sum'];

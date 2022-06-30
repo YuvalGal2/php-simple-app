@@ -24,19 +24,18 @@ class Initialize {
 	    values('.$row->shop_ID.', 0 )
 		');
 
-		$this->database->query(
-		'insert into shop_items ( shop_id, total_order_shipping_cost, total_order_handling_cost,  total_production_cost) 
-		values('.$row->shop_ID.','.$row->total_order_shipping_cost.','.$row->total_order_handling_cost.','.$row->total_production_cost.')');
-
 		$this->database->query(	"insert into shop_orders ( total_items, order_id, shop_id,created_at, updated_at, total_price,subtotal_price, 
 		total_weight,total_tax,currency, financial_status,name,
-		processed_at,fulfillment_status,country,province,total_discounts ) 
+		processed_at,fulfillment_status,country,province,total_discounts,
+		total_order_shipping_cost, total_order_handling_cost,  total_production_cost
+		) 
 		values(
 		{$row->total_items},'{$row->order_ID}','{$row->shop_ID}','{$row->created_at}',
 		'{$row->updated_at}','{$row->total_price}',{$row->subtotal_price},{$row->total_weight},
 		 {$row->total_tax},'{$row->currency}','{$row->financial_status}',
 		'{$row->name}','{$row->processed_at}','{$row->fulfillment_status}','{$row->country}',
-		'{$row->province}','{$row->total_discounts}'
+		'{$row->province}','{$row->total_discounts}',
+		'.$row->total_order_shipping_cost.','.$row->total_order_handling_cost.','.$row->total_production_cost.'
 		)
 		");
 	  }
@@ -73,16 +72,10 @@ class Initialize {
 	  country VARCHAR(6),
 	  province VARCHAR(6) NULL,
 	  total_discounts VARCHAR(6),
-	  
-	  )",
-
-	"CREATE TABLE shop_items (
-	  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-      shop_id varchar(99),
 	  total_order_shipping_cost INT(6),
 	  total_order_handling_cost INT(6),
-	  total_production_cost INT(6))"
-	  ];
+	  total_production_cost INT(6)
+	  )"];
 
 	 foreach( $queries as $query) {
 		  $this->database->query($query);

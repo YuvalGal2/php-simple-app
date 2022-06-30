@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="896245c8-7b29-4399-aab2-70366d001a4c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/classes/db/DBConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/db/DBConnection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/initApp.php" beforeDir="false" afterPath="$PROJECT_DIR$/initApp.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/analytics/Calculation.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/analytics/Calculation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +17,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/index.php" root0="SKIP_INSPECTION" root1="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="2BIoZkyaivcfRrz9n3xrgaC8uuP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -27,6 +31,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -38,7 +43,7 @@
       <option name="presentableId" value="Default" />
       <updated>1656603022870</updated>
       <workItem from="1656603027269" duration="1717000" />
-      <workItem from="1656604957248" duration="1358000" />
+      <workItem from="1656604957248" duration="2223000" />
     </task>
     <servers />
   </component>
