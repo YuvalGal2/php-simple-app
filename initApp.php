@@ -7,10 +7,8 @@ define("URL","https://www.become.co/api/rest/test");
 class Initialize {
   
   public function checkIfInitalized() {
-    $dbConnection = new DBConnection();
-	$this->database = $dbConnection->connect();
+	$this->database = DBConnection::getDB();
 	$this->createAppFromMockData();
-
   }  
   private function createAppFromMockData(){
     $response = $this->sendRequest();
@@ -21,29 +19,26 @@ class Initialize {
   }	
   private function insertDataToDB($payload = null) {
 	  foreach($payload as $row) {
-		 var_dump($row);
+		
 		$this->database->query('insert into shops(shop_id,closed_at)
 	    values('.$row->shop_ID.', 0 )
 		');
-		
+
 		$this->database->query(
 		'insert into shop_items ( shop_id, total_order_shipping_cost, total_order_handling_cost,  total_production_cost) 
-		values(
-		'.$row->shop_ID.','.$row->total_order_shipping_cost.','
-		.$row->total_order_handling_cost.','.$row->total_production_cost.')');
-				
-		$this->database->query(
-		'insert into shop_orders ( total_items, order_id, shop_id,created_at, updated_at, total_price,subtotal_price, 
+		values('.$row->shop_ID.','.$row->total_order_shipping_cost.','.$row->total_order_handling_cost.','.$row->total_production_cost.')');
+
+		$this->database->query(	"insert into shop_orders ( total_items, order_id, shop_id,created_at, updated_at, total_price,subtotal_price, 
 		total_weight,total_tax,currency, financial_status,name,
-		processed_at,fulfillment_status,country,province ) 
+		processed_at,fulfillment_status,country,province,total_discounts ) 
 		values(
-		'.$row->total_items.','.$row->order_ID.','.$row->shop_ID.','.$row->created_at.','
-		.$row->updated_at.','.$row->total_price.','.$row->subtotal_price.','.$row->total_weight.','
-		.$row->total_tax.','.$row->currency.','.$row->financial_status.','
-		.$row->name.','.$row->processed_at.','.$row->fulfillment_status.','.$row->country.','
-		.$row->province.'
+		{$row->total_items},'{$row->order_ID}','{$row->shop_ID}','{$row->created_at}',
+		'{$row->updated_at}','{$row->total_price}',{$row->subtotal_price},{$row->total_weight},
+		 {$row->total_tax},'{$row->currency}','{$row->financial_status}',
+		'{$row->name}','{$row->processed_at}','{$row->fulfillment_status}','{$row->country}',
+		'{$row->province}','{$row->total_discounts}'
 		)
-		');
+		");
 	  }
   }
   private function createTables(){  
@@ -63,23 +58,24 @@ class Initialize {
 	"CREATE TABLE shop_orders (
 	  total_items INT(6),
 	  order_id INT(32),
-	  shop_id varchar(99),
-	  created_at varchar(99),
-	  updated_at varchar(99),
-	  total_price INT(6),
-	  subtotal_price INT(6),
-	  total_weight INT(6),
-	  total_tax INT(6),
+	  shop_id VARCHAR(99),
+	  created_at VARCHAR(99),
+	  updated_at VARCHAR(99),
+	  total_price VARCHAR(99),
+	  subtotal_price VARCHAR(99),
+	  total_weight VARCHAR(99),
+	  total_tax VARCHAR(99),
 	  currency VARCHAR(10),
 	  financial_status VARCHAR(12),
-	  total_discounts INT(6),
 	  name VARCHAR(12),
 	  processed_at TIMESTAMP NULL,
 	  fulfillment_status VARCHAR(32),
 	  country VARCHAR(6),
-	  province VARCHAR(6) NULL
+	  province VARCHAR(6) NULL,
+	  total_discounts VARCHAR(6),
+	  
 	  )",
-	
+
 	"CREATE TABLE shop_items (
 	  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       shop_id varchar(99),
@@ -87,7 +83,7 @@ class Initialize {
 	  total_order_handling_cost INT(6),
 	  total_production_cost INT(6))"
 	  ];
-	  
+
 	 foreach( $queries as $query) {
 		  $this->database->query($query);
 	 }

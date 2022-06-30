@@ -7,6 +7,11 @@ define("PASSWORD","");
 define("DBNAME","analytics");
 class DBConnection {
 private $conn = null;
+
+  public static function getDB() {
+      $dbConnection = new DBConnection();
+      return $dbConnection->connect();
+  }
   public function __construct($host = HOST, $username = USERNAME, $password = PASSWORD, $dbName = DBNAME) {
     $this->host = $host;
     $this->username = $username;
