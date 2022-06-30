@@ -1,5 +1,5 @@
 <?php
-//error_reporting(0);
+error_reporting(0);
 /* For time sake i dont take it from .env file but... i could */
 define("HOST","127.0.0.1");
 define("USERNAME", "root");
